@@ -1,5 +1,5 @@
 # dotnet-login-lista-tarefas
-- Usado .Net8, Entity Framework  com SQLite
+- Usado .Net8, Identity Core e Entity Framework com SQLite
   
   Video no Youtube de demonstração: https://www.youtube.com/watch?v=MbVEaN_xoQU
 
