@@ -13,6 +13,7 @@
 
 - Com o arquivo "localDB.db" existente, para rodar o projeto:
   "dotnet watch"
+- Após o comando "dotnet watch" irá abrir automaticamente a pagina de documentação do Swagger.
 
 # Package usados:
 - ORM Entity:
