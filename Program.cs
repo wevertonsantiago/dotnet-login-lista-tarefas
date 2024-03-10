@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using configs;
 using dataContext;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
@@ -6,14 +7,11 @@ using middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddCors();
 builder.Services.AddControllers(options =>
 {
     options.Conventions.Add(new RouteTokenTransformerConvention(
         new EndpointLowercaseLetter()));
 });
-
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -22,6 +20,7 @@ builder.Services.AddDbContext<DataContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.AddCorsConfigs();
 builder.AddSwaggerConfigs();
 builder.AddAuthConfigs();
 builder.AddRateLimiterConfigs();
@@ -38,15 +37,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<UnauthorizedMiddleware>();
 
+app.UseHttpsRedirection();
+
+app.UseCors("CorsPolicy");
+
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.UseRateLimiter();
 
-app.UseHttpsRedirection();
-
 app.MapControllers();
 
 app.Run();
-
