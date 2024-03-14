@@ -11,7 +11,7 @@ public static class RateLimiterConfigs
         {
             rateOptions.AddFixedWindowLimiter(policyName: "rateLimitRquest", options =>
             {
-                options.PermitLimit = 1;
+                options.PermitLimit = 3;
                 options.Window = TimeSpan.FromSeconds(5);
                 options.QueueLimit = 2;
                 options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
