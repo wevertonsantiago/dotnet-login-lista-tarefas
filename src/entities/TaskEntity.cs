@@ -21,17 +21,17 @@ public class TaskEntity
     public string? Description { get; set; }
 
     [Column("date_create")]
-    [JsonIgnore] // PARA NÃO MOSTAR NO SWAGGER
+    [JsonIgnore]
     public DateTime DateCreate { get; set; }
 
     [Column("date_upgrade")]
-    [JsonIgnore] // PARA NÃO MOSTAR NO SWAGGER
+    [JsonIgnore]
     public DateTime DateUpgrade { get; set; }
 
 
     [ForeignKey("UserId")]
     [JsonIgnore]
-    public string UserId { get; init; } = Guid.NewGuid().ToString();
+    public string UserId { get; init; }
     [JsonIgnore]
     public UserEntity? User { get; set; }
 
